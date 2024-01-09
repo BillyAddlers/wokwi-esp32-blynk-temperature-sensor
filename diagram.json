@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "author": "Riichi Rusdiana",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -166.2, "left": -26, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 48, "left": -14.36, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -162.9, "left": 52.2, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 54.4,
+      "left": 236,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:15", "bb1:9b.i", "green", [ "v0" ] ],
+    [ "esp:GND.3", "bb1:11b.j", "black", [ "h0" ] ],
+    [ "esp:5V", "bb1:8b.j", "red", [ "h0" ] ],
+    [ "dht1:VCC", "bb1:8b.f", "", [ "$bb" ] ],
+    [ "dht1:SDA", "bb1:9b.f", "", [ "$bb" ] ],
+    [ "dht1:NC", "bb1:10b.f", "", [ "$bb" ] ],
+    [ "dht1:GND", "bb1:11b.f", "", [ "$bb" ] ],
+    [ "esp:GND.2", "lcd1:GND", "black", [ "v0" ] ],
+    [ "esp:3V3", "lcd1:VCC", "green", [ "h0" ] ],
+    [ "esp:21", "lcd1:SDA", "green", [ "h0" ] ],
+    [ "esp:22", "lcd1:SCL", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
